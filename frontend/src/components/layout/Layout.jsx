@@ -78,7 +78,7 @@ const Layout = ({ children }) => {
         <Typography variant="caption" color="text.secondary" sx={{ display: 'block', lineHeight: 1.6 }}>
           &copy; 2026 MGPGI-ORTHODONTICS. All rights reserved.
           <br />
-          Developed by SP <img src="/tooth-heart.png" alt="Heart Tooth" style={{ verticalAlign: 'middle', height: '1.5em', marginLeft: '4px', marginBottom: '2px' }} />
+          Developed by SP <img src={`${import.meta.env.BASE_URL}tooth-heart.png`} alt="Heart Tooth" style={{ verticalAlign: 'middle', height: '1.5em', marginLeft: '4px', marginBottom: '2px' }} />
         </Typography>
       </Box>
     </Box>

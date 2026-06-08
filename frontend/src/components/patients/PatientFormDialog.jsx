@@ -9,11 +9,20 @@ const GENDERS = ['Male', 'Female', 'Other'];
 
 const PatientFormDialog = ({ open, onClose }) => {
   const queryClient = useQueryClient();
-  const [formData, setFormData] = useState({
+  
+  const initialFormState = {
     name: '', age: '', gender: '', phone: '', address: '', referredBy: '',
     opdNo: '', orthoNo: '', classifications: [], diagnosis: '', treatmentPlan: '',
     procedureDone: '', notes: '', status: 'New Case'
-  });
+  };
+
+  const [formData, setFormData] = useState(initialFormState);
+
+  React.useEffect(() => {
+    if (open) {
+      setFormData(initialFormState);
+    }
+  }, [open]);
 
   const mutation = useMutation({
     mutationFn: createPatient,
