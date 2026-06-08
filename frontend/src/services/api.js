@@ -1,15 +1,19 @@
-import axios from 'axios';
+const API_URL = 'https://script.google.com/macros/s/AKfycbyDqA8ozjni9a6lxWrDDBXu1BlQxn65TpYI5vyRrZwmE8KXBZXXfUSpecVmgIUe6j5W/exec';
 
-const api = axios.create({
-  baseURL: 'http://localhost:5000/api',
-});
-
-api.interceptors.request.use(config => {
-  const token = localStorage.getItem('token');
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
+export const gasRequest = async (action, data = {}) => {
+  try {
+    const response = await fetch(`${API_URL}?action=${action}`, {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'text/plain;charset=utf-8',
+      },
+    });
+    
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error('Google Apps Script API Error:', error);
+    throw error;
   }
-  return config;
-});
-
-export default api;
+};

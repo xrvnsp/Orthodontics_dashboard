@@ -42,10 +42,10 @@ const PatientFormDialog = ({ open, onClose }) => {
       <DialogTitle>Add New Patient</DialogTitle>
       <form onSubmit={handleSubmit}>
         <DialogContent dividers>
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}><TextField fullWidth label="Full Name" name="name" value={formData.name} onChange={handleChange} required /></Grid>
-            <Grid item xs={12} sm={3}><TextField fullWidth label="Age" name="age" type="number" value={formData.age} onChange={handleChange} required /></Grid>
-            <Grid item xs={12} sm={3}>
+          <Grid container spacing={3}>
+            <Grid item xs={12} sm={8}><TextField fullWidth label="Full Name" name="name" value={formData.name} onChange={handleChange} required /></Grid>
+            <Grid item xs={6} sm={4}><TextField fullWidth label="Age" name="age" type="number" value={formData.age} onChange={handleChange} required /></Grid>
+            <Grid item xs={6} sm={4}>
               <FormControl fullWidth>
                 <InputLabel id="gender-label">Gender</InputLabel>
                 <Select labelId="gender-label" name="gender" value={formData.gender} onChange={handleChange} label="Gender">
@@ -53,8 +53,8 @@ const PatientFormDialog = ({ open, onClose }) => {
                 </Select>
               </FormControl>
             </Grid>
-            <Grid item xs={12} sm={6}><TextField fullWidth label="OPD Number" name="opdNo" value={formData.opdNo} onChange={handleChange} required /></Grid>
-            <Grid item xs={12} sm={6}><TextField fullWidth label="Ortho Number" name="orthoNo" value={formData.orthoNo} onChange={handleChange} required /></Grid>
+            <Grid item xs={12} sm={4}><TextField fullWidth label="OPD Number" name="opdNo" value={formData.opdNo} onChange={handleChange} required /></Grid>
+            <Grid item xs={12} sm={4}><TextField fullWidth label="Ortho Number" name="orthoNo" value={formData.orthoNo} onChange={handleChange} required /></Grid>
             <Grid item xs={12} sm={6}><TextField fullWidth label="Phone Number" name="phone" value={formData.phone} onChange={handleChange} /></Grid>
             <Grid item xs={12} sm={6}><TextField fullWidth label="Referred By" name="referredBy" value={formData.referredBy} onChange={handleChange} /></Grid>
             <Grid item xs={12}><TextField fullWidth label="Address" name="address" value={formData.address} onChange={handleChange} /></Grid>

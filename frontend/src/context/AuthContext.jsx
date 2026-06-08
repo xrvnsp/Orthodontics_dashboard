@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react';
-import api from '../services/api';
+import { gasRequest } from '../services/api';
 
 export const AuthContext = createContext();
 
@@ -19,14 +19,18 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const login = async (username, password) => {
-    const response = await api.post('/auth/login', { username, password });
-    const { token, role } = response.data;
+    const result = await gasRequest('login', { username, password });
+    if (!result.success) {
+      throw new Error(result.message || 'Login failed');
+    }
+    
+    const { token, user: userData } = result;
     
     localStorage.setItem('token', token);
-    localStorage.setItem('role', role);
-    localStorage.setItem('username', username);
+    localStorage.setItem('role', userData.role);
+    localStorage.setItem('username', userData.username);
     
-    setUser({ token, role, username });
+    setUser({ token, role: userData.role, username: userData.username });
   };
 
   const logout = () => {

@@ -1,21 +1,18 @@
-import api from './api';
+import { gasRequest } from './api';
 
 export const getPatients = async () => {
-  const response = await api.get('/patients');
-  return response.data;
+  const result = await gasRequest('getPatients');
+  return Array.isArray(result) ? result : [];
 };
 
 export const createPatient = async (patientData) => {
-  const response = await api.post('/patients', patientData);
-  return response.data;
+  return await gasRequest('addPatient', patientData);
 };
 
 export const updatePatient = async (serialNo, patientData) => {
-  const response = await api.put(`/patients/${serialNo}`, patientData);
-  return response.data;
+  return await gasRequest('updatePatient', { serialNo, data: patientData });
 };
 
 export const deletePatient = async (serialNo) => {
-  const response = await api.delete(`/patients/${serialNo}`);
-  return response.data;
+  return await gasRequest('deletePatient', { serialNo });
 };
