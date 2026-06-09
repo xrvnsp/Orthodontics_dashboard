@@ -35,7 +35,7 @@ const Dashboard = () => {
   if (isLoading) return <Box sx={{ display: 'flex', justifyContent: 'center', p: 5 }}><CircularProgress /></Box>;
   if (error) return <Typography color="error">Error loading dashboard data</Typography>;
 
-  const chartData = data?.chartData || [];
+  const chartData = data?.monthlyRegistrations || [];
 
   return (
     <Box>
@@ -52,14 +52,6 @@ const Dashboard = () => {
             color="#1976d2" 
           />
         </Grid>
-        <Grid item xs={12} sm={6} md={4} lg={2.4}>
-          <KPICard 
-            title="New Today" 
-            value={data?.newPatientsToday || 0} 
-            icon={<TodayIcon sx={{ color: '#2e7d32' }} />} 
-            color="#2e7d32" 
-          />
-        </Grid>
         <Grid item xs={12} sm={6} md={4} xl={2}>
           <KPICard 
             title="New This Month" 
@@ -68,7 +60,7 @@ const Dashboard = () => {
             color="#9c27b0" 
           />
         </Grid>
-        <Grid item xs={12} sm={6} md={4} lg={2.4}>
+        <Grid item xs={12} sm={6} md={4} xl={2}>
           <KPICard 
             title="Active Treatments" 
             value={data?.activeTreatments || 0} 
@@ -76,10 +68,10 @@ const Dashboard = () => {
             color="#ed6c02" 
           />
         </Grid>
-        <Grid item xs={12} sm={6} md={4} lg={2.4}>
+        <Grid item xs={12} sm={6} md={4} xl={2}>
           <KPICard 
-            title="Completed" 
-            value={data?.completedCases || 0} 
+            title="Completed Cases" 
+            value={data?.completed || 0} 
             icon={<CheckCircleIcon sx={{ color: '#0288d1' }} />} 
             color="#0288d1" 
           />
