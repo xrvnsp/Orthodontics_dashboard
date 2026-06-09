@@ -8,6 +8,7 @@ import theme from './theme';
 import { AuthProvider } from './context/AuthContext';
 
 const queryClient = new QueryClient();
+console.log("HELLO WORLD GLASSMORPHISM TEST");
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
